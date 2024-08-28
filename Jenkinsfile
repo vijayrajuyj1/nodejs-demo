@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent {
+        label 'java-build-node'
+    }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-cred')
     }
