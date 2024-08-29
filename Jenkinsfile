@@ -9,14 +9,14 @@ pipeline {
         stage('SCM Checkout') {
             steps{
             echo 'Checking out the code...'
-           // git 'https://github.com/ravdy/nodejs-demo.git'
+            git 'https://github.com/ravdy/nodejs-demo.git' //--give your repo 
            sh ' echo passed'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t vijayarajult2/nodeapp3:$BUILD_NUMBER .'
+                sh 'docker build -t vijayarajult2/nodeapp2:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push vijayarajult2/nodeapp3:$BUILD_NUMBER'
+                sh 'docker push vijayarajult2/nodeapp2:$BUILD_NUMBER'
             }
         }
 }
@@ -35,5 +35,3 @@ post {
             sh 'docker logout'
         }
     }
-}
-
